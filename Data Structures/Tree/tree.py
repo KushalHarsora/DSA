@@ -1,42 +1,48 @@
 class Tree:
 
-    # Root Node
+    # Initialized an empty Node (Root Node)
     def __init__(self, data):
         self.parent = None
         self.children = []
         self.data = data
 
+    # Add Child data to given object
     def add_child(self, child):
+        print(self)
+        print(self.data)
         child.parent = self
         self.children.append(child)
 
 
-# Created Root Node
-electronics = Tree("Electronics")
-# Created children of root node
-laptop = Tree("Laptop")
-phone = Tree("Phone")
+def build_tree():
 
-# Add children
-electronics.add_child(laptop)
-electronics.add_child(phone)
+    # Create a Root Node
+    root = Tree("Electronics")
 
-# Add Children to Laptop
-lenovo = Tree("Lenovo")
-asus = Tree("Asus")
-hp = Tree("Hp")
-laptop.add_child(lenovo)
-laptop.add_child(asus)
-laptop.add_child(hp)
+    # Create Children Node
+    laptop = Tree("Laptop")
+    laptop.add_child(Tree("Asus"))
+    laptop.add_child(Tree("Lenovo"))
 
-# Add Children to Phone
-samsung = Tree("Samsung")
-oneplus = Tree("OnePlus")
-motorola = Tree("Motorola")
-nokia = Tree("Nokia")
-pixel = Tree("Pixel")
-phone.add_child(samsung)
-phone.add_child(oneplus)
-phone.add_child(motorola)
-phone.add_child(nokia)
-phone.add_child(pixel)
+    mobile = Tree("Mobile")
+    mobile.add_child(Tree("Samsung"))
+    mobile.add_child(Tree("Apple"))
+    mobile.add_child(Tree("Nokia"))
+    mobile.add_child(Tree("Motorola"))
+
+    tv = Tree("Tv")
+    tv.add_child(Tree("Sony"))
+    tv.add_child(Tree("MI"))
+    tv.add_child(Tree("OnePlus"))
+
+    # Add Child to Root Node
+    root.add_child(laptop)
+    root.add_child(mobile)
+    root.add_child(tv)
+
+    # Return Root Node
+    return root
+
+
+if __name__ == '__main__':
+    build_tree()
