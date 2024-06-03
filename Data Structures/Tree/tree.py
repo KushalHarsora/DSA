@@ -8,10 +8,26 @@ class Tree:
 
     # Add Child data to given object
     def add_child(self, child):
-        print(self)
-        print(self.data)
         child.parent = self
         self.children.append(child)
+
+    # Get Level of Node in Tree
+    def __get_level(self):
+        level = 0
+        p = self.parent
+        while p:
+            p = p.parent
+            level += 1
+        return level
+
+    # Print Tree using DFS
+    def print_tree_dfs(self):
+        print(self.data)
+        if self.children:
+            for child in self.children:
+                spaces = ' ' * (child.__get_level() * 2)
+                print(spaces + "|__", end="")
+                child.print_tree()
 
 
 def build_tree():
@@ -45,4 +61,5 @@ def build_tree():
 
 
 if __name__ == '__main__':
-    build_tree()
+    rootNode = build_tree()
+    rootNode.print_tree_dfs()
