@@ -21,7 +21,7 @@ class Tree:
         return level
 
     # Print Tree using DFS
-    def print_tree_dfs(self):
+    def print_tree(self):
         print(self.data)
         if self.children:
             for child in self.children:
@@ -62,4 +62,4 @@ def build_tree():
 
 if __name__ == '__main__':
     rootNode = build_tree()
-    rootNode.print_tree_dfs()
+    rootNode.print_tree()
